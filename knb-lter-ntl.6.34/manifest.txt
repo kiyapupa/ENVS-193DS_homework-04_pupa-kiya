@@ -1,0 +1,5 @@
+Manifest file for knb-lter-ntl.6.34-4c9184f37cff01bcdc32dc486ec36961.zip created on Mon May 15 15:28:15 MDT 2023
+ntl6_v12.csv (31093190 bytes)
+knb-lter-ntl.6.34.xml (42988 bytes)
+knb-lter-ntl.6.34.txt (23232 bytes)
+knb-lter-ntl.6.34.report.xml (31601 bytes)
