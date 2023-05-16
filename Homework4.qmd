@@ -1,0 +1,41 @@
+---
+title: "Homework 4"
+author: "Rylee Pupa"
+format: docx
+editor: visual
+---
+
+```{r}
+library(here)
+library(janitor)
+library(tidyverse)
+library(naniar)
+library(visdat)
+```
+
+```{r}
+#reading in files using here function, clean names to make lowercase and more readable, mutate all entries to lowercase
+fish <- read_csv(here("data", "ntl6_v12.csv")) %>% clean_names() %>% mutate_all(tolower) 
+
+#look at data
+str(fish)
+```
+
+```{r}
+#Problem 1
+#create new dataframe, filtering by the three years you need and for the mudminnow species
+mudminnow <- fish %>% filter(year4 %in% c("1982", "2002", "2021"), spname %in% c("mudminnow"))
+
+#look at data
+str(mudminnow)
+
+#view dataframe
+view(mudminnow)
+```
+
+```{r}
+#Problem 2
+trout_perch <- fish %>% filter(spname == "troutperch")
+str(trout_perch)
+view(trout_perch)
+```
