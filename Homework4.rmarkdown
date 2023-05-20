@@ -24,11 +24,13 @@ library(ggeffects)
 library(car)
 ```
 
+
 1.  Write your null and alternative hypotheses in mathematical and biological terms.
     -   null: fish length does not predict fish weight for trout perch across all sample years
         -   math: In statistical terms, H0: x̄a = x̄b??
     -   alternative: fish length does not not predict fish weight for trout perch across all sample years
         -   math: HA: x̄a is not equal to x̄b in alternative??
+
 
 ```{r}
 #reading in files using here function, clean names to make lowercase and more readable
@@ -82,7 +84,9 @@ model_summary
 model_anova
 ```
 
+
 summarizing model in a table
+
 
 ```{r}
 #7 creating a table that summarizes the anova table 
@@ -108,12 +112,14 @@ model_anova_table <- tidy(model_anova) %>%
 model_anova_table
 ```
 
+
 					
 
 7.  In 1-2 sentences, describe how the ANOVA table relates to the information you get from the **summary()** object
 
 8.  In 2-3 sentences, summarize your results in prose with in-text references to test results.
     Include all relevant information.
+
 
 ```{r}
 #10) creating visualization with model predictions and confidence intervals 
@@ -143,3 +149,4 @@ predict_plot <- ggplot(data = troutperch_model,
 
 predict_plot
 ```
+
