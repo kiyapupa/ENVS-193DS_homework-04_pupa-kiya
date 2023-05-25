@@ -24,11 +24,13 @@ library(ggeffects)
 library(car)
 ```
 
+
 1.  Write your null and alternative hypotheses in mathematical and biological terms.
     -   null: fish length does not predict fish weight for trout perch across all sample years
         -   math: In statistical terms, r = 0
     -   alternative: fish length does predict fish weight for trout perch across all sample years
         -   math: In statistical terms, r is not equal to zero
+
 
 ```{r}
 #reading in files using here function, clean names to make lowercase and more readable
@@ -68,6 +70,7 @@ plot(troutperch_model)
 #remove outliers
 ```
 
+
 #5) For each diagnostic plot, describe in 1-2 sentences what it is showing you, and what youdecide after looking at the plot. Check assumptions:
 
 1.  The Residuals vs. fitted plot shows us if the errors or residuals in the relationship are homoscedastic, in other words whether or not there is a constant variance. This is visible because the errors plotted are mostly constant throughout the range of x-axis values, most except outliers are evenly and randomly distributed across the horizontal line
@@ -80,6 +83,7 @@ Other assumptions not shown in grid:
 Assumption 1: There is a linear relationship between variables: Yes! From our exploratory data visualization we can see a mostly linear relationship despite outliers.
 
 Assumption 2: The errors are independent (no correlation): Yes we would assume so because the data collected was independent, so we can assume that errors in one measurement wouldn't influence errors in other observations. 
+
 
 ```{r}
 #storing our summary model as an object 
@@ -94,7 +98,9 @@ model_summary
 model_anova
 ```
 
+
 summarizing model in a table
+
 
 ```{r}
 #7 creating a table that summarizes the anova table 
@@ -120,6 +126,7 @@ model_anova_table <- tidy(model_anova) %>%
 model_anova_table
 ```
 
+
 7.  In 1-2 sentences, describe how the ANOVA table relates to the information you get from the **summary()** object
 
     7.  The Anova table is formed from the anova function which extracts the summary information from the model object, including the degrees of freedom, sum of squares, mean squares, F-statistic, and P-value. This data is meant to compare the means and test for significant differences between them.
@@ -127,6 +134,7 @@ model_anova_table
 8.  In 2-3 sentences, summarize your results in prose with in-text references to test results. Include all relevant information.
 
     7.  I hypothesized that fish length would not predict fish weight for trout perch across our sample years. The results of the analysis show that length does predict fish weight in trout perch across all years (analysis of variance, F(1, 288) = 1280.84 p \< 0.001, ⍺ =0.05).
+
 
 ```{r}
 #10) creating visualization with model predictions and confidence intervals 
@@ -156,3 +164,4 @@ predict_plot <- ggplot(data = troutperch_model,
 
 predict_plot
 ```
+
