@@ -94,7 +94,7 @@ model_summary
 model_anova
 ```
 
-orsummarizing model in a table
+summarizing model in a table
 
 ```{r}
 #7 creating a table that summarizes the anova table 
@@ -122,7 +122,12 @@ model_anova_table
 
 7.  In 1-2 sentences, describe how the ANOVA table relates to the information you get from the **summary()** object
 
+    7.  The Anova table is formed from the anova function which extracts the summary information from the model object, including the degrees of freedom, sum of squares, mean squares, F-statistic, and P-value. This data is meant to compare the means and test for significant differences between them.
+
 8.  In 2-3 sentences, summarize your results in prose with in-text references to test results. Include all relevant information.
+
+    7.  I hypothesized that fish length would not predict fish weight for trout perch across our sample years. The results of the analysis show that length does predict fish weight in trout perch across all years (analysis of variance, F(1, 288) = 1280.84 p \< 0.001, ⍺ =
+        0.05).
 
 ```{r}
 #10) creating visualization with model predictions and confidence intervals 
