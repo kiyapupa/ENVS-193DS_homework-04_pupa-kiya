@@ -8,7 +8,12 @@ execute:
   message: false
 ---
 
+date: May 25, 2023
+
+link to repo: https://github.com/kiyapupa/ENVS-193DS_homework-04_pupa-kiya
+
 ```{r}
+#load packages
 library(here)
 library(janitor)
 library(tidyverse)
@@ -54,30 +59,28 @@ ggplot(data = trout_perch, aes(x = length, y = weight)) +
 ```
 
 ```{r}
-#3 running our linear tests (can check assumptions from this)
+#3) running our linear tests (can check assumptions from this)
 #creating a linear model of the length and weight
 troutperch_model <- lm(weight ~ length, data = trout_perch)
 
-#make pane show grid of diagnostic plots from linear model 
+#4) make pane show grid of diagnostic plots from linear model 
 par(mfrow = c(2,2))
+
+#plot the model
 plot(troutperch_model) 
   
-#to turn off two by two grid 
-#dev.off()
-
-#remove outliers
 ```
 
-#5) For each diagnostic plot, describe in 1-2 sentences what it is showing you, and what youdecide after looking at the plot. Check assumptions:
+#5) For each diagnostic plot, describe in 1-2 sentences what it is showing you, and what you decide after looking at the plot. Check assumptions:
 
 1.  The Residuals vs. fitted plot shows us if the errors or residuals in the relationship are homoscedastic, in other words whether or not there is a constant variance. The data does not look homoscedastic because the errors plotted are not mostly constant throughout the range of x-axis values, both the data and the outliers are not evenly and randomly distributed across the horizontal line
 2.  The Normal QQ plot shows us if the errors are normally distributed, with the straight line through the plot I would assume yes it is normally distibuted.
-3.  The scale location plot also checks for homoscedasticy of variance but instead uses square root of standardized residuals. The variance of residuals is not evenly and not randomly distributed so I would also say that the residuals are not homockedastic.
+3.  The scale location plot also checks for homoscedasticy of variance but instead uses square root of standardized residuals. The variance of residuals is not evenly and not randomly distributed so I would also say that the residuals are not homoscedastic.
 4.  The residuals versus leverage plot (also called Cook's model) helps us check if outliers are influencing our model estimates by measuring the influence of a single observation on the model. Since there are several points labeled in the graph, I would say yes outliers are influencing.
 
 Other assumptions not shown in grid:
 
-Assumption 1: There is a linear relationship between variables: Yes! From our exploratory data visualization we can see a mostly linear relationship despite outliers.
+Assumption 1: There is a linear relationship between variables: From our exploratory data visualization we can see a mostly linear relationship despite outliers.
 
 Assumption 2: The errors are independent (no correlation): Yes we would assume so because the data collected was independent, so we can assume that errors in one measurement wouldn't influence errors in other observations.
 
@@ -126,7 +129,7 @@ model_anova_table
 
 9.  In 2-3 sentences, summarize your results in prose with in-text references to test results. Include all relevant information.
 
-    -   The null hypothesis was that fish length would not predict fish weight for trout perch across our sample years. The results of the analysis show that length does have an effect that may predict fish weight in trout perch across all years (analysis of variance, F(1, 288) = 1280.84 p \< 0.001, ⍺ =0.05).
+    -   The null hypothesis was that fish length would not predict fish weight for trout perch across our sample years, which was rejected because p\<0.001. The low mean squared value of 1.12 shows that the average model differs from the actual values of the linear model by 1.12 grams. The results of the analysis show that fish length can be used to predict fish weight in trout perch across all years (analysis of variance, F(1, 288) = 1280.84 p \< 0.001, ⍺ =0.05).
 
 ```{r}
 #10) creating visualization with model predictions and confidence intervals 
@@ -143,7 +146,7 @@ predict_plot <- ggplot(data = troutperch_model,
   #plotting predictions of linear model, changing aesthetics of plot line
   geom_line(data = troutperch_predict, 
               aes(x = x, y = predicted), 
-              color = "red", linewidth = 0.8) +
+              color = "magenta", linewidth = 0.8) +
   #plotting the confidence interval from the gg predict function (95%)
   geom_ribbon(data = troutperch_predict, 
               aes(x = x, y = predicted, ymin = conf.low, ymax = conf.high), 
